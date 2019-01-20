@@ -1,7 +1,7 @@
-FROM ubuntu:latest
-MAINTAINER Ruud van Engelenhoven
+FROM ubuntu:18.04
+LABEL maintainer="ruud.vanengelenhoven@gmail.com"
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y  --no-install-recommends \
     apt-utils \
     cron \
     curl \
@@ -12,4 +12,6 @@ RUN apt-get update && apt-get install -y \
     supervisor \
     unzip \
     vim \
-    wget
+    wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
